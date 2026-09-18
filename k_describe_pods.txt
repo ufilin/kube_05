@@ -1,0 +1,87 @@
+Name:             my-deployment-6b58676844-xlbcf
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             debian/172.19.0.1
+Start Time:       Fri, 18 Sep 2026 12:57:05 +0300
+Labels:           app=my-app
+                  pod-template-hash=6b58676844
+Annotations:      cni.projectcalico.org/containerID: 2a2c64fd5fbfa156244bc1b72c5b851b32c22366012c6c1743eab359fd20e889
+                  cni.projectcalico.org/podIP: 10.1.245.219/32
+                  cni.projectcalico.org/podIPs: 10.1.245.219/32
+Status:           Running
+IP:               10.1.245.219
+IPs:
+  IP:           10.1.245.219
+Controlled By:  ReplicaSet/my-deployment-6b58676844
+Containers:
+  busybox:
+    Container ID:  containerd://528f9310af2b898ff4eceac2a191fae4c280dae1565984df3e1803e8c995b7e1
+    Image:         busybox:latest
+    Image ID:      docker.io/library/busybox@sha256:dc2d74b28e4cf8984fa52af1f39bc7c3d9c73760b41a74d629f5d11b1ab28616
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      while true; do echo $(date) > /input/date.txt; sleep 5; done
+    State:          Running
+      Started:      Fri, 18 Sep 2026 12:57:06 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /input from vol (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-pqx8d (ro)
+  multitool:
+    Container ID:  containerd://6d223a9a94a80e837b88e62f41ae01991a8d28c86d9d1d1f7638706d6cb82412
+    Image:         wbitt/network-multitool
+    Image ID:      docker.io/wbitt/network-multitool@sha256:db2810fe2c8d36db074eab5d98fbf861c8ed55e0786d648d3477b3de9135632e
+    Port:          80/TCP
+    Host Port:     0/TCP
+    Command:
+      /bin/sh
+      -c
+      tail -f /input/date.txt
+    State:          Running
+      Started:      Fri, 18 Sep 2026 12:57:07 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /input from vol (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-pqx8d (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  vol:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-pqx8d:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  91s   default-scheduler  Successfully assigned default/my-deployment-6b58676844-xlbcf to debian
+  Normal  Pulling    91s   kubelet            spec.containers{busybox}: Pulling image "busybox:latest"
+  Normal  Pulled     90s   kubelet            spec.containers{busybox}: Successfully pulled image "busybox:latest" in 919ms (919ms including waiting). Image size: 2236931 bytes.
+  Normal  Created    90s   kubelet            spec.containers{busybox}: Container created
+  Normal  Started    90s   kubelet            spec.containers{busybox}: Container started
+  Normal  Pulling    90s   kubelet            spec.containers{multitool}: Pulling image "wbitt/network-multitool"
+  Normal  Pulled     89s   kubelet            spec.containers{multitool}: Successfully pulled image "wbitt/network-multitool" in 940ms (940ms including waiting). Image size: 96718848 bytes.
+  Normal  Created    89s   kubelet            spec.containers{multitool}: Container created
+  Normal  Started    89s   kubelet            spec.containers{multitool}: Container started
