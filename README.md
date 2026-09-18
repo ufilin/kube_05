@@ -18,7 +18,7 @@
 
 <p align="center">
   <img src="kube_05-1-2.png" width="800">
-</p>### Описание пода с контейнерами
+</p>
 
 ### Вывод команды чтения файла
 
@@ -43,7 +43,7 @@
 
 <p align="center">
   <img src="kube_05-2-2.png" width="800">
-</p>### Описание пода с контейнерами
+</p>
 
 ### Состояние PV после удаления Deployment and PVC
 
@@ -58,7 +58,7 @@
 <p align="center">
   <img src="kube_05-2-4.png" width="800">
 </p>
-
+  
 <p align="center">
   <img src="kube_05-2-5.png" width="800">
 </p>
